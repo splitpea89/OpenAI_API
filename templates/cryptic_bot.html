@@ -24,10 +24,13 @@
 
       <div class="col-sm-2"></div>
       <div class="col-sm-8" style="padding-top: 2rem">
-        <input type="text" id="input" name="input" class="text-center col-sm-8" style="padding: 1.5rem; border-radius: 10px; background: grey"/>
-        <button type="button" class="btn btn-primary" id="chatBtn" style="padding: 1.5rem">Go</button>
+        <div class="row text-center">
+          <input type="text" id="input" name="input" class="text-center" style="padding: 1.5rem; width: calc(100%); border-radius: 10px; background: grey"/>
+          <div style="padding: 2rem"></div>
+          <button type="button" class="btn btn-primary" style="padding: 3rem" id="chatBtn">Go</button>
+        </div>
         <div style="padding: 1rem;"></div>
-        <div class="text-center" id="comment" style="padding: 3rem; background: antiquewhite; border-radius: 10px"></div>
+        <div class="text-center" id="comment" style="padding: 10rem; background: grey; border-radius: 10px"></div>
       </div>
 
     </div>
@@ -38,7 +41,7 @@
 <script>
 
   document.getElementById('chatBtn').addEventListener('click', fetchJsonData)
-  let messages = [{"role":"system", "content":"You are a normal Chatbot assistant, but you speak in cryptic riddles and rhymes."}];
+  let messages = [{"role":"system", "content":"You are a normal Chatbot assistant, but you only speak in cryptic rhymes and riddles."}];
 
   function testing(){
     alert("It Works!!!");
@@ -60,7 +63,7 @@
             .then(response => {return response.text();})
             .then(message => {
               console.log('Fetched JSON data:', message);
-              textArea.innerText += "CHATBOT: " + message + "\n\n\n\n ";
+              textArea.innerText += "CHATBOT: " + message + "\n\n\n ";
               messages.push({"role":"assistant", "content": message})
               console.log(textArea.innerText);
               textArea.scrollTop = textArea.scrollHeight;

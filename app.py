@@ -21,6 +21,10 @@ def cryptic_bot():
 def pirate_bot():
     return render_template("pirate_bot.html")
 
+@app.route('/thanos_bot')
+def thanos_bot():
+    return render_template("thanos_bot.html")
+
 @app.route('/chat')
 def chat():
     prompt = request.args.get('prompt')

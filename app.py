@@ -13,15 +13,24 @@ def home_page():
     # return key
     return render_template("index.html")
 
-@app.route('/riddle_bot')
+@app.route('/cryptic_bot')
+def cryptic_bot():
+    return render_template("cryptic_bot.html")
+
+@app.route('/pirate_bot')
+def pirate_bot():
+    return render_template("pirate_bot.html")
+
+@app.route('/chat')
 def chat():
     prompt = request.args.get('prompt')
-    messages = [{"role":"system", "content":"You are a normal Chatbot assistant, but you speak in cryptic riddles and rhymes."}]
     convo = json.loads(prompt)
-    messages.extend(convo)
+
+
+
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=messages
+        messages=convo
     )
     print(completion.choices[0].message.content)
     return(completion.choices[0].message.content)
